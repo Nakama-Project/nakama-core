@@ -22,5 +22,5 @@ accounts-ui
 accounts-password
 react
 less
-twbs:bootstrap
 iron:router
+zurb:foundation-sites
