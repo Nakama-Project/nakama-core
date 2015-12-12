@@ -1,4 +1,4 @@
 Router.route('/', function () {
-  this.render('hello', {
+  this.render('home', {
   });
 });

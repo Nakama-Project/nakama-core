@@ -2,7 +2,11 @@
 App = React.createClass({
 
   // This mixin makes the getMeteorData method work
-  // mixins: [ReactMeteorData],
+  mixins: [ReactMeteorData],
+
+  getMeteorData() {
+    return {currentUser: Meteor.user()};
+  },
 
   getInitialState() {
     return {
@@ -12,11 +16,20 @@ App = React.createClass({
 
   render() {
     return (
-      <div className="container">
+      <div className="row">
         <header>
-          <h1>Login/out</h1>
+          
 
-          <AccountsUIWrapper />
+          { this.data.currentUser ?
+            <div id="intro">
+              <button id="logout" type="button" className="button">Logout</button> 
+            </div>
+            :
+            <div id="welcome">
+              <h1>Welcome to the World of Nakama</h1>
+              <button id="login" type="button" className="button"><i className="fa fa-github-alt"></i> Login with Github</button>
+            </div>
+          }
 
         </header>
 

@@ -2,3 +2,12 @@
 @import '{zurb:foundation-sites}/scss/foundation';
 
 @include foundation-everything;
+
+#welcome {
+    text-align: center;
+}
+
+#intro {
+    margin-top: 200px;
+    text-align: center;
+}
