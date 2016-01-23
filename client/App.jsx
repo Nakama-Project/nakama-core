@@ -27,7 +27,7 @@ App = React.createClass({
             :
             <div id="welcome">
               <h1>Welcome to the World of Nakama</h1>
-              <button id="login" type="button" className="button"><i className="fa fa-github-alt"></i> Login with Github</button>
+              <button id="login" type="button" className="large button"><i className="fa fa-github-alt"></i> Login with Github</button>
             </div>
           }
 
