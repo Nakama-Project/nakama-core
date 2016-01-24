@@ -1,29 +1,32 @@
 /* @flow */
 
-HitPointComponent = React.createClass({
-  mixins: [ReactMeteorData],
-
-  getMeteorData() {
-    return {
-      hps: HitPointCollections.find({}).fetch()
-    }
+HitPoint = React.createClass({
+  propTypes: {
+    hp: React.PropTypes.object.isRequired
   },
-
-  renderHitPoints() {
-    return this.data.hps.map((hp) => {
-      return (
-        <p className="nakama-hp" key={hp._id}>
-          {hp.nakama}: {hp.hp}
-        </p>
-      );
+  addHP() {
+    HitPointCollections.update(this.props.hp._id,{
+      $set: {hp: this.props.hp.hp+1}
     });
   },
-
+  dropHP() {
+    HitPointCollections.update(this.props.hp._id,{
+      $set: {hp: this.props.hp.hp-1}
+    });
+  },
   render() {
     return (
-        <div className="hp-stats">
-          {this.renderHitPoints()}
-        </div>
+      <div>
+        <p>
+          {this.props.hp.nakama}: {this.props.hp.hp}
+        </p>
+        <button className="plus button" onClick={this.addHP}>
+          +
+        </button>
+        <button className="minus button" onClick={this.dropHP}>
+          -
+        </button>
+      </div>
     );
   }
 });

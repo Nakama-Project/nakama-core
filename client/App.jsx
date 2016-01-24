@@ -6,7 +6,10 @@ App = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
-    return {currentUser: Meteor.user()};
+    return {
+      currentUser: Meteor.user(),
+      hps: HitPointCollections.find({}).fetch()
+    };
   },
 
   getInitialState() {
@@ -14,21 +17,17 @@ App = React.createClass({
     }
   },
 
+  renderHitPoints() {
+    return this.data.hps.map((hp) => {
+      return <HitPoint key={hp._id} hp={hp} />;
+    });
+  },
+
   render() {
     return (
       <div className="row">
         <header>
-          { this.data.currentUser ?
-            <div id="intro">
-              <button id="logout" type="button" className="button">Logout</button>
-            </div>
-            :
-            <div id="welcome">
-              <h1>Welcome to the World of Nakama</h1>
-              <button id="login" type="button" className="large button"><i className="fa fa-github-alt"></i> Login with Github</button>
-              <HitPointComponent/>
-            </div>
-          }
+          { this.renderHitPoints() }
         </header>
       </div>
     );
