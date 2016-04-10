@@ -1,1 +1,1 @@
-HitPointCollections = new Mongo.Collection('hp');
+NakamaCollection = new Mongo.Collection('nakama');

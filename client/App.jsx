@@ -8,7 +8,7 @@ App = React.createClass({
   getMeteorData() {
     return {
       currentUser: Meteor.user(),
-      hps: HitPointCollections.find({}).fetch()
+      nakamas: NakamaCollection.find({}).fetch()
     };
   },
 
@@ -17,9 +17,9 @@ App = React.createClass({
     }
   },
 
-  renderHitPoints() {
-    return this.data.hps.map((hp) => {
-      return <HitPoint key={hp._id} hp={hp} />;
+  renderNakama() {
+    return this.data.nakamas.map((nakama) => {
+      return <Nakama key={nakama._id} nakama={nakama} />;
     });
   },
 
@@ -27,7 +27,7 @@ App = React.createClass({
     return (
       <div className="row">
         <header>
-          { this.renderHitPoints() }
+          { this.renderNakama() }
         </header>
       </div>
     );
